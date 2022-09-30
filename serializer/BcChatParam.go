@@ -22,7 +22,7 @@ func (query *BcChatParam) SerializeParam() bool {
 }
 
 func (query *BcChatParam) BuildDBData(point *model.BcChat) (err error) {
-	point = &model.BcChat{
+	*point = model.BcChat{
 		Model: gorm.Model{
 			ID: query.ID,
 		},

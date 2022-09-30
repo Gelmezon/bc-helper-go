@@ -39,7 +39,7 @@ func (router BcChatRouter) get(c *gin.Context) {
 
 func (router BcChatRouter) list(c *gin.Context) {
 	var bcChatParam serializer.BcChatParam
-	var bcChat *model.BcChat
+	bcChat := new(model.BcChat)
 	err := c.ShouldBind(&bcChatParam)
 	if err != nil {
 		response.FailWithMessage(err.Error(), c)
@@ -69,7 +69,7 @@ func (router BcChatRouter) list(c *gin.Context) {
 
 func (router BcChatRouter) page(c *gin.Context) {
 	var bcChatParam serializer.BcChatParam
-	var chat *model.BcChat
+	chat := new(model.BcChat)
 	err := c.ShouldBind(&bcChatParam)
 	if err != nil {
 		response.FailWithMessage(err.Error(), c)
@@ -101,7 +101,7 @@ func (router BcChatRouter) page(c *gin.Context) {
 
 func (router BcChatRouter) create(c *gin.Context) {
 	var bcChatParam serializer.BcChatParam
-	var chat *model.BcChat
+	chat := new(model.BcChat)
 	err := c.ShouldBindJSON(&bcChatParam)
 	if err != nil {
 		response.FailWithMessage(err.Error(), c)
@@ -123,7 +123,7 @@ func (router BcChatRouter) create(c *gin.Context) {
 
 func (router BcChatRouter) update(c *gin.Context) {
 	var bcChatParam serializer.BcChatParam
-	var chat *model.BcChat
+	chat := new(model.BcChat)
 	err := c.ShouldBindJSON(&bcChatParam)
 	if err != nil {
 		response.FailWithMessage(err.Error(), c)

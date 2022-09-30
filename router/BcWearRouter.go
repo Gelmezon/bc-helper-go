@@ -5,6 +5,7 @@ import (
 	"awesomeProject/model/response"
 	"awesomeProject/serializer"
 	"awesomeProject/service"
+	"fmt"
 	"github.com/gin-gonic/gin"
 	"net/http"
 	"strconv"
@@ -39,7 +40,7 @@ func (router BcWearRouter) get(c *gin.Context) {
 
 func (router BcWearRouter) list(c *gin.Context) {
 	var bcWearParam serializer.BcWearParam
-	var bcWear *model.BcWear
+	bcWear := new(model.BcWear)
 	err := c.ShouldBind(&bcWearParam)
 	if err != nil {
 		response.FailWithMessage(err.Error(), c)
@@ -69,7 +70,7 @@ func (router BcWearRouter) list(c *gin.Context) {
 
 func (router BcWearRouter) page(c *gin.Context) {
 	var bcWearParam serializer.BcWearParam
-	var wear *model.BcWear
+	wear := new(model.BcWear)
 	err := c.ShouldBind(&bcWearParam)
 	if err != nil {
 		response.FailWithMessage(err.Error(), c)
@@ -101,9 +102,10 @@ func (router BcWearRouter) page(c *gin.Context) {
 
 func (router BcWearRouter) create(c *gin.Context) {
 	var bcWearParam serializer.BcWearParam
-	var wear *model.BcWear
+	wear := new(model.BcWear)
 	err := c.ShouldBindJSON(&bcWearParam)
 	if err != nil {
+		fmt.Println(err.Error())
 		response.FailWithMessage(err.Error(), c)
 		return
 	}
@@ -123,7 +125,7 @@ func (router BcWearRouter) create(c *gin.Context) {
 
 func (router BcWearRouter) update(c *gin.Context) {
 	var bcWearParam serializer.BcWearParam
-	var wear *model.BcWear
+	wear := new(model.BcWear)
 	err := c.ShouldBindJSON(&bcWearParam)
 	if err != nil {
 		response.FailWithMessage(err.Error(), c)

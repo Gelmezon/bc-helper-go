@@ -34,7 +34,7 @@ func (query *BcWearParam) BuildDBData(point *model.BcWear) (err error) {
 	if len(query.WearName) != 0 && len(query.UpdateMemberNumber) != 0 {
 		autoSave = true
 	}
-	point = &model.BcWear{
+	*point = model.BcWear{
 		Model: gorm.Model{
 			ID: query.ID,
 		},
